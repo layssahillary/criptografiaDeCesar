@@ -1,6 +1,8 @@
 # Trabalho Segurança e Auditoria de Sistemas
 # Criptografia de Cesar
 
+![Logo do Projeto](cesar.png)
+
 ## Objetivo
 Desenvolver uma ferramenta de criptografia e descriptografia de mensagens utilizando o método da cifra de César.
 
