@@ -1,52 +1,26 @@
 function cifraDeCesarCriptografar(palavra, chave) {
-  const alfabeto = (letter) => letter.toUpperCase().charCodeAt(0) - 65;
-  const letraPosicao = (position) => String.fromCharCode(position + 65);
-
   let novaPalavra = '';
 
   for (let i = 0; i < palavra.length; i++) {
-    const letraAtual = palavra[i];
-    const letraMaiuscula = letraAtual.toUpperCase();
+    const codigoASCII = palavra.charCodeAt(i); // Obtém o código ASCII do caractere
+    const novoCodigoASCII = (codigoASCII + chave) % 256; // Aplica a chave com limite no código ASCII (0-255)
 
-    if (!letraMaiuscula.match(/[A-Z]/)) {
-      throw Error;
-    }
-
-    const posicaoAtual = alfabeto(letraMaiuscula);
-    let novaPosicao = (posicaoAtual + chave) % 26;
-    if (novaPosicao < 0) novaPosicao += 26;
-
-    const novaLetra = letraPosicao(novaPosicao);
-
-    novaPalavra +=
-      letraAtual === letraAtual.toUpperCase()
-        ? novaLetra
-        : novaLetra.toLowerCase();
+    novaPalavra += String.fromCharCode(novoCodigoASCII); // Converte de volta para caractere
   }
 
   return novaPalavra;
 }
 
 function cifraDeCesarDescriptografar(palavra, chave) {
-  const alfabeto = (letter) => letter.toUpperCase().charCodeAt(0) - 65;
-  const letraPosicao = (position) => String.fromCharCode(position + 65);
-
   let novaPalavra = '';
 
   for (let i = 0; i < palavra.length; i++) {
-    const letraAtual = palavra[i];
-    const letraMaiuscula = letraAtual.toUpperCase();
+    const codigoASCII = palavra.charCodeAt(i); // Obtém o código ASCII do caractere
+    let novoCodigoASCII = (codigoASCII - chave) % 256; // Aplica a chave com limite no código ASCII (0-255)
 
-    const posicaoAtual = alfabeto(letraMaiuscula);
-    let novaPosicao = (posicaoAtual - chave) % 26;
-    if (novaPosicao < 0) novaPosicao += 26;
+    if (novoCodigoASCII < 0) novoCodigoASCII += 256; // Garante que o valor seja positivo
 
-    const novaLetra = letraPosicao(novaPosicao);
-
-    novaPalavra +=
-      letraAtual === letraAtual.toUpperCase()
-        ? novaLetra
-        : novaLetra.toLowerCase();
+    novaPalavra += String.fromCharCode(novoCodigoASCII); // Converte de volta para caractere
   }
 
   return novaPalavra;
