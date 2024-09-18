@@ -2,10 +2,10 @@ function cifraDeCesarCriptografar(palavra, chave) {
   let novaPalavra = '';
 
   for (let i = 0; i < palavra.length; i++) {
-    const codigoASCII = palavra.charCodeAt(i); // Obtém o código ASCII do caractere
-    const novoCodigoASCII = (codigoASCII + chave) % 256; // Aplica a chave com limite no código ASCII (0-255)
+    const codigoASCII = palavra.charCodeAt(i);
+    const novoCodigoASCII = (codigoASCII + chave) % 256; 
 
-    novaPalavra += String.fromCharCode(novoCodigoASCII); // Converte de volta para caractere
+    novaPalavra += String.fromCharCode(novoCodigoASCII);
   }
 
   return novaPalavra;
@@ -15,12 +15,12 @@ function cifraDeCesarDescriptografar(palavra, chave) {
   let novaPalavra = '';
 
   for (let i = 0; i < palavra.length; i++) {
-    const codigoASCII = palavra.charCodeAt(i); // Obtém o código ASCII do caractere
-    let novoCodigoASCII = (codigoASCII - chave) % 256; // Aplica a chave com limite no código ASCII (0-255)
+    const codigoASCII = palavra.charCodeAt(i); 
+    let novoCodigoASCII = (codigoASCII - chave) % 256;
 
-    if (novoCodigoASCII < 0) novoCodigoASCII += 256; // Garante que o valor seja positivo
+    if (novoCodigoASCII < 0) novoCodigoASCII += 256; 
 
-    novaPalavra += String.fromCharCode(novoCodigoASCII); // Converte de volta para caractere
+    novaPalavra += String.fromCharCode(novoCodigoASCII); 
   }
 
   return novaPalavra;
